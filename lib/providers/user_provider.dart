@@ -12,6 +12,7 @@ class UserNotifier extends AsyncNotifier<UserModel>{
   bool _currentFaceDown = false;
   bool _isSessionActive = false;
   bool get isSessionActive => _isSessionActive;
+  bool get isFaceDown => _currentFaceDown;
 
   @override
   Future<UserModel> build() async {
@@ -26,9 +27,8 @@ class UserNotifier extends AsyncNotifier<UserModel>{
     }
   }
 
-  void updateStatus(bool atUni, bool faceDown){
-    _currentAtUni = atUni;
-    _currentFaceDown = faceDown;
+  void updateFaceDownStatus(bool faceDown) {
+  _currentFaceDown = faceDown;
   }
 
   Future<void> updateName(String newName) async {

@@ -96,7 +96,7 @@ class ProfilePage extends ConsumerWidget{
                             duration: const Duration(milliseconds: 300),
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
-                              color: isSelected ? Colors.deepPurple.withOpacity(0.1) : Colors.transparent,
+                              color: isSelected ? Colors.deepPurple.withValues(alpha: 0.1) : Colors.transparent,
                               shape: BoxShape.circle,
                               border: Border.all(color: isSelected ? Colors.deepPurple : Colors.transparent, width: 2),
                             ),
@@ -125,7 +125,7 @@ class ProfilePage extends ConsumerWidget{
                     prefixIcon: const Icon(Icons.edit_note),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
                     filled: true,
-                    fillColor: Colors.grey.withOpacity(0.05),
+                    fillColor: Colors.grey.withValues(alpha: 0.05),
                   ),
                   onSubmitted: (value) {
                     if (value.trim().isNotEmpty) {
