@@ -134,7 +134,7 @@ class DashboardView extends ConsumerWidget {
                 stream: SensorService().faceDownStream,
                 builder: (context, snapshot) {
                   final isRitualActive = snapshot.data ?? false;
-                  Future.microtask(() => ref.read(userProvider.notifier).updateStatus(true, isRitualActive));
+                  Future.microtask(() => ref.read(userProvider.notifier).updateStatus(isSessionActive, isRitualActive));
                   return AnimatedScale(
                     scale: isRitualActive ? 1.03 : 1.0,
                     duration: const Duration(milliseconds: 500),
@@ -187,7 +187,7 @@ class DashboardView extends ConsumerWidget {
                       //we check the location only at the press of the button
                       //to save battery (go to services/location_service for further explanation)
                       if (atUni && context.mounted) {
-                        ref.read(userProvider.notifier).startAutoXp(atUni, true);
+                        ref.read(userProvider.notifier).startAutoXp(atUni, isRitualActive);
                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Quest iniziata! Buona fortuna, Eroe.")));
                       } else if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Devi essere in Università!"), backgroundColor: Colors.redAccent));

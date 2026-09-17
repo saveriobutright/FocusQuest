@@ -25,7 +25,7 @@ class UserModel {
       level: map['level'],
       currentXp: map['current_xp'],
       goalLevel5Reached: map['goalLevel5Reached'] == 1,
-      goalRitualUsed: map['goalRitualUser'] == 1,
+      goalRitualUsed: map['goalRitualUsed'] == 1,
       avatar: map['avatar'],
     );
   }
