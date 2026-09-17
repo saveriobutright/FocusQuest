@@ -70,7 +70,7 @@ class DashboardView extends ConsumerWidget {
                             Container(
                               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                               decoration: BoxDecoration(
-                                color: Colors.amber.withOpacity(0.2),
+                                color: Colors.amber.withValues(alpha: 0.2),
                                 borderRadius: BorderRadius.circular(20)),
                               child: Text("LIVELLO ${user.level}", style: const TextStyle(color: Colors.amber, fontWeight: FontWeight.bold, fontSize: 14)),
                             ),
@@ -134,7 +134,7 @@ class DashboardView extends ConsumerWidget {
                 stream: SensorService().faceDownStream,
                 builder: (context, snapshot) {
                   final isRitualActive = snapshot.data ?? false;
-                  Future.microtask(() => ref.read(userProvider.notifier).updateStatus(isSessionActive, isRitualActive));
+                  Future.microtask(() => ref.read(userProvider.notifier).updateFaceDownStatus(isRitualActive),);
                   return AnimatedScale(
                     scale: isRitualActive ? 1.03 : 1.0,
                     duration: const Duration(milliseconds: 500),
@@ -187,7 +187,8 @@ class DashboardView extends ConsumerWidget {
                       //we check the location only at the press of the button
                       //to save battery (go to services/location_service for further explanation)
                       if (atUni && context.mounted) {
-                        ref.read(userProvider.notifier).startAutoXp(atUni, isRitualActive);
+                        final isFaceDown = ref.read(userProvider.notifier).isFaceDown;
+                        ref.read(userProvider.notifier).startAutoXp(atUni, isFaceDown);
                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Quest iniziata! Buona fortuna, Eroe.")));
                       } else if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Devi essere in Università!"), backgroundColor: Colors.redAccent));
