@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.focus_quest"
+    namespace = "com.saveriopolito.focus_quest"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -20,8 +20,7 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.focus_quest"
+        applicationId = "com.saveriopolito.focus_quest"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
